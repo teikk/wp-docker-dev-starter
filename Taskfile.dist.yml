@@ -1,0 +1,31 @@
+version: '3'
+
+dotenv: ['.env']
+
+tasks:
+  build:
+    desc: Start docker containers
+    cmds:
+      - docker-compose up -d
+
+  stop:
+    desc: Stop docker containers
+    cmds:
+      - docker-compose stop
+  
+  destroy:
+    desc: Destroy docker containers with assigned volumes
+    cmds: 
+      - docker-compose down -v
+
+  bash:
+    desc: Enter cli of local container
+    cmds:
+      - docker-compose up -d wordpress
+      - docker-compose exec wordpress bash
+
+  setup:
+    desc: Setup environment for work
+    cmds: 
+      - cp -n ./.env.example ./.env
+      - docker-compose up --force-recreate --always-recreate-deps -d --remove-orphans --build

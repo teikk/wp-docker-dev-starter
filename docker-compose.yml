@@ -1,0 +1,36 @@
+services:
+
+  wordpress:
+    build: 
+      context: .
+      target: wordpress
+      dockerfile: ./Dockerfile
+    image: teikk/wp-dev-starter:latest
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: ${DB_HOST:-db}:${DB_PORT:-3306}
+      WORDPRESS_DB_USER: ${DB_USER:-dbuser}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-dbpass}
+      WORDPRESS_DB_NAME: ${DB_DATABASE:-dbname}
+      WORDPRESS_DEBUG: ${WP_DEBUG:-''}
+
+    volumes:
+      - wordpress:/var/www/html
+      - ./wp-config.php:/var/www/html/wp-config.php
+
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MARIADB_DATABASE: ${DB_DATABASE:-dbname}
+      MARIADB_USER: ${DB_USER:-dbuser}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-dbpass}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-dbpass}
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
