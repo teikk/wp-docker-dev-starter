@@ -22,10 +22,12 @@ tasks:
     desc: Enter cli of local container
     cmds:
       - docker-compose up -d wordpress
-      - docker-compose exec wordpress bash
+      - docker-compose exec -u root wordpress bash
 
   setup:
     desc: Setup environment for work
     cmds: 
       - cp -n ./.env.example ./.env
+      - sed -i "s/{uid}/${UID}/g" ./.env
+      - sed -i "s/{gid}/${GID}/g" ./.env
       - docker-compose up --force-recreate --always-recreate-deps -d --remove-orphans --build

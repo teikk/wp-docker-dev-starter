@@ -13,5 +13,16 @@ RUN apt-get -qq update ; apt-get -y install unzip curl sudo subversion mariadb-c
         && apt-get autoclean \
         && chsh -s /bin/bash www-data
 
+ARG UID
+ARG GID
+
+ENV UID=${UID}
+ENV GID=${GID}
+
+RUN useradd -g www-data --system --no-create-home --shell /bin/sh -u ${UID} developer
+
+USER developer
+WORKDIR /var/www/html
+
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 ENV WP_CLI_ALLOW_ROOT=1
