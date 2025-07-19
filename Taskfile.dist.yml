@@ -3,7 +3,7 @@ version: '3'
 dotenv: ['.env']
 
 tasks:
-  build:
+  start:
     desc: Start docker containers
     cmds:
       - docker-compose up -d
