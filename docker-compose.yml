@@ -3,7 +3,7 @@ services:
   wordpress:
     build: 
       context: .
-      target: wordpress
+      target: development
       dockerfile: ./Dockerfile
     image: teikk/wp-dev-starter:latest
     restart: always
