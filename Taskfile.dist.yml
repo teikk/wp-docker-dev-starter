@@ -31,3 +31,14 @@ tasks:
       - sed -i "s/{uid}/${UID}/g" ./.env
       - sed -i "s/{gid}/${GID}/g" ./.env
       - docker-compose up --force-recreate --always-recreate-deps -d --remove-orphans --build
+
+  build:
+    desc: Build image
+    cmds:
+      - docker build --no-cache --target production --tag ${DOCKER_REGISTRY}/wordpress_production:latest .
+
+  push:
+    desc: Push image
+    cmds:
+      - docker tag ${DOCKER_REGISTRY}/wordpress_production:latest ${DOCKER_REGISTRY}/wordpress_production:${BUILD_TAG}
+      - docker push ${DOCKER_REGISTRY}/wordpress_production:${BUILD_TAG}
