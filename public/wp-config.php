@@ -36,10 +36,7 @@ define( 'DB_CHARSET', 'utf8mb4' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
-// echo '<pre>'.print_r(DB_NAME,true).'</pre>';
-// echo '<pre>'.print_r(DB_USER,true).'</pre>';
-// echo '<pre>'.print_r(DB_PASSWORD,true).'</pre>';
-// exit();
+
 /**#@+
  * Authentication unique keys and salts.
  *
