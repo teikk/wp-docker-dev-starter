@@ -2,9 +2,15 @@
 docker-compose.override.yml
 /vendor
 public/wp/
-public/content/*
-!public/content/mu-plugins
+public/content/cache
+public/content/uploads
+public/content/languages
+public/content/plugins/*
+public/content/themes/*
 
+!public/content/mu-plugins
+!public/content/plugins/.gitkeep
+!public/content/themes/.gitkeep
 
 # Adjust to match theme name in development
-!public/content/themes/block-theme
+# !public/content/themes/block-theme
