@@ -16,6 +16,13 @@ RUN mkdir -p /opt/app/public && \
     chown -R developer:developer /opt/app/public
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN apk add --no-cache --update \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
+    libzip-dev 
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
