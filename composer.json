@@ -1,0 +1,41 @@
+{
+    "name": "teikk/wp-docker-dev-starter",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Konrad",
+            "email": "k.lyzwa7@gmail.com"
+        }
+    ],
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "require": {
+        "composer/installers": "^2.3",
+        "roots/wordpress-core-installer": "^3.0",
+        "roots/wordpress-no-content": "^6.8"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "composer/installers": true,
+            "roots/wordpress-core-installer": true
+        }
+    },
+    "extra": {
+        "wordpress-install-dir": "public/wp",
+        "installer-paths": {
+            "public/content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+            "public/content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "public/content/themes/{$name}/": ["type:wordpress-theme"]
+        }
+    }
+}
