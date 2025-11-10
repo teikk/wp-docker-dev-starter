@@ -1,4 +1,10 @@
 .env
 docker-compose.override.yml
-themes/
-plugins/
+/vendor
+public/wp/
+public/content/*
+!public/content/mu-plugins
+
+
+# Adjust to match theme name in development
+!public/content/themes/block-theme

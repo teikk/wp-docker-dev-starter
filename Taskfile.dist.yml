@@ -21,8 +21,8 @@ tasks:
   bash:
     desc: Enter cli of local container
     cmds:
-      - docker-compose up -d wordpress
-      - docker-compose exec wordpress bash
+      - docker-compose up -d php
+      - docker-compose exec php sh
 
   setup:
     desc: Setup environment for work
