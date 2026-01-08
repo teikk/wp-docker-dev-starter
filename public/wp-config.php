@@ -105,7 +105,7 @@ define('WP_CONTENT_DIR', $webroot_dir . CONTENT_DIR);
 define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
 
 
-define('WP_ENVIRONMENT_TYPE', 'development');
+define('WP_ENVIRONMENT_TYPE', getenv('APP_ENV'));
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */

@@ -8,6 +8,7 @@ ARG GID=1337
 
 ENV UID=${UID}
 ENV GID=${GID}
+ENV APP_ENV=production
 
 RUN addgroup -g ${GID} -S developer && \
     adduser -S -D -H -u ${UID} -G developer developer
@@ -28,6 +29,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
     php wp-cli.phar --info; \
     chmod +x wp-cli.phar; \
+    mv "$PHP_INI_DIR/php.ini-$APP_ENV" "$PHP_INI_DIR/php.ini"; \
     mv wp-cli.phar /usr/local/bin/wp;
 
 USER developer
