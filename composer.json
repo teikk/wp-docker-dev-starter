@@ -20,7 +20,7 @@
     "require": {
         "composer/installers": "^2.3",
         "roots/wordpress-core-installer": "^3.0",
-        "roots/wordpress-no-content": "^6.8"
+        "roots/wordpress-no-content": "^6.9"
     },
     "config": {
         "optimize-autoloader": true,
