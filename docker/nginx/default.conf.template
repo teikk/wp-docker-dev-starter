@@ -22,11 +22,12 @@ server {
     location ~ \.php$ {
         fastcgi_pass "${FCGI_SERVER_HOST}:${FCGI_SERVER_PORT}";
         fastcgi_index index.php;
+        include fastcgi_params;
+        
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param PHP_VALUE "error_log=/dev/stderr";
         fastcgi_buffers 16 16k;
         fastcgi_buffer_size 32k;
-        include fastcgi_params;
     }
 
     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
