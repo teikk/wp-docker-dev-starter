@@ -34,5 +34,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     mv "$PHP_INI_DIR/php.ini-$APP_ENV" "$PHP_INI_DIR/php.ini"; \
     mv wp-cli.phar /usr/local/bin/wp;
 
+COPY docker/php/php.extra.ini /usr/local/etc/php/conf.d/php.extra-99.ini
+
 USER developer
 WORKDIR /opt/app/public
